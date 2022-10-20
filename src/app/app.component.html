@@ -1,0 +1,16 @@
+<div *ngIf="loading">Loading data...</div>
+<div *ngIf="hasError" class="error">
+  Connection error. Please try again later.
+  <button type="button" (click)="loadAndParseData()">Try again</button>
+</div>
+<ng-container *ngIf="!loading && !hasError">
+  Date: {{date}}
+  <table>
+    <tr>
+      <th *ngFor="let header of headers">{{ header }}</th>
+    </tr>
+    <tr *ngFor="let rate of rates">
+      <th *ngFor="let rateProp of rate">{{ rateProp }}</th>
+    </tr>
+  </table>
+</ng-container>
